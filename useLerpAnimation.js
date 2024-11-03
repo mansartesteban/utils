@@ -1,3 +1,4 @@
+import { randomNumber } from "./utils/Algebra"
 
 export default (element, useMouse) => {
     let position = {
@@ -31,8 +32,15 @@ export default (element, useMouse) => {
         target.y = y
     }
 
+    const newRandomTarget = () => {
+        let x = randomNumber(window.innerWidth * .2, window.innerWidth - window.innerWidth * .2)
+        let y = randomNumber(window.innerHeight * .2, window.innerHeight - window.innerHeight * .2)
+
+        newTarget(x, y)
+    }
+
     loop()
 
-    return { newTarget }
+    return { newTarget, newRandomTarget }
 
 }
